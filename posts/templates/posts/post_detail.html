@@ -1,0 +1,24 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+
+        <div class="post">
+          {% if post.published_date %}
+              <div class="date">
+                  {{ post.published_date }}
+              </div>
+          {% endif %}
+          {% if user.is_authenticated %}
+
+          {% endif %}
+          <h1>{{ post.title }}</h1>
+          <p>{{ post.text|linebreaksbr }}</p>
+          <h2>Answers</h2>
+          {% for answer in answers %}
+
+              <p>{{ answer.text|linebreaksbr }}</p>
+
+          {% endfor %}
+        </div>
+
+{% endblock content %}
