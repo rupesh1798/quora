@@ -3,16 +3,17 @@
 {% block content %}
 
         <div class="post">
-          {% if post.published_date %}
+          {% if question.published_date %}
               <div class="date">
-                  {{ post.published_date }}
+                  {{ question.published_date }}
               </div>
           {% endif %}
           {% if user.is_authenticated %}
 
           {% endif %}
-          <h1>{{ post.title }}</h1>
-          <p>{{ post.text|linebreaksbr }}</p>
+          <h1>{{ question.text }}</h1>
+          <a href="{% url 'add_answer' pk=question.pk %}">Add answer</a>
+          <p>{{ question.details|linebreaksbr }}</p>
           <h2>Answers</h2>
           {% for answer in answers %}
 

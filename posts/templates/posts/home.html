@@ -1,18 +1,18 @@
 {% extends 'posts/base.html' %}
 
 {% block content %}
-    {% for post in posts %}
+    {% for question in questions %}
 
         <div class="post">
             <div class="date">
-                {{ post.published_date }}
+                {{ question.published_date }}
             </div>
 
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
+            <h1><a href="{% url 'question_detail' pk=question.pk %}">{{ question.text }}</a></h1>
+            <p>{{ question.text|linebreaksbr }}</p>
             <h2>Answers</h2>
             {% for answer in answers %}
-              {% if answer.question.title == post.title %}
+              {% if answer.question.text == question.text %}
                 <p>{{ answer.text|linebreaksbr }}</p>
               {% endif %}
             {% endfor %}

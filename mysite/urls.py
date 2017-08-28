@@ -15,9 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.static import serve
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('users.urls')),
     url(r'', include('posts.urls')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
+# serving media files only on debug mode
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT
+        }),
+    ]
