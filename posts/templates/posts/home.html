@@ -9,7 +9,7 @@
             </div>
 
             <h1><a href="{% url 'question_detail' pk=question.pk %}">{{ question.text }}</a></h1>
-            <p>{{ question.text|linebreaksbr }}</p>
+            <p>{{ question.details|linebreaksbr }}</p>
             <h2>Answers</h2>
             {% for answer in answers %}
               {% if answer.question.text == question.text %}
